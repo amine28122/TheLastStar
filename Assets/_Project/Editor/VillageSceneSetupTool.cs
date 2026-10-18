@@ -66,7 +66,18 @@ namespace TheLastStar.EditorTools
             vignette.smoothness.Override(0.4f);
 
             volume.profile = profile;
-            AssetDatabase.CreateAsset(profile, "Assets/_Project/Settings/CinematicVillage_Profile.asset");
+            string settingsFolder = "Assets/_Project/Settings";
+            if (!System.IO.Directory.Exists(settingsFolder))
+            {
+                System.IO.Directory.CreateDirectory(settingsFolder);
+                AssetDatabase.Refresh();
+            }
+            string profilePath = settingsFolder + "/CinematicVillage_Profile.asset";
+            if (System.IO.File.Exists(profilePath))
+            {
+                AssetDatabase.DeleteAsset(profilePath);
+            }
+            AssetDatabase.CreateAsset(profile, profilePath);
 
             // 4. Village Stone Plaza (Concentric Altar)
             GameObject plazaGroup = new GameObject("Village_Plaza_Architecture");
@@ -287,7 +298,12 @@ namespace TheLastStar.EditorTools
             camFollow.SetTarget(playerGO.transform);
 
             // 10. Save and Open Scene
-            string scenePath = "Assets/_Project/Scenes/Regions/R1_ForgottenVillage_Cinematic.unity";
+            string sceneDir = "Assets/_Project/Scenes/Regions";
+            if (!System.IO.Directory.Exists(sceneDir))
+            {
+                System.IO.Directory.CreateDirectory(sceneDir);
+            }
+            string scenePath = sceneDir + "/R1_ForgottenVillage_Cinematic.unity";
             EditorSceneManager.SaveScene(scene, scenePath);
             EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);
 
@@ -330,4 +346,5 @@ namespace TheLastStar.EditorTools
     }
 }
 #endif
+
 
