@@ -237,7 +237,7 @@ namespace TheLastStar.EditorTools
             // Fox Antler / Long Ears
             for (int i = -1; i <= 1; i += 2)
             {
-                GameObject ear = GameObject.CreatePrimitive(PrimitiveType.Cone ?? PrimitiveType.Cylinder);
+                GameObject ear = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
                 ear.name = $"Fox_Ear_{(i == -1 ? "L" : "R")}";
                 ear.transform.parent = head.transform;
                 ear.transform.localPosition = new Vector3(i * 0.2f, 0.32f, 0.05f);
@@ -420,3 +420,4 @@ namespace TheLastStar.EditorTools
     }
 }
 #endif
+
