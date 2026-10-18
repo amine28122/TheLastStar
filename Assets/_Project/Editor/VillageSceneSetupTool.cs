@@ -4,6 +4,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using TheLastStar.Core;
 using TheLastStar.Player;
 using TheLastStar.Abilities;
 using TheLastStar.Interaction;
@@ -329,3 +330,4 @@ namespace TheLastStar.EditorTools
     }
 }
 #endif
+
